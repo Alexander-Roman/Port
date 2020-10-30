@@ -1,0 +1,6 @@
+{
+	"ships": [
+		{ "id":1, "name":"LEE A.TREGURTHA", "cargo":500, "capacity":1000, "port":null },
+		{ "id":2, "name":"MAERSK MC KINNEY MOLLER", "cargo":500, "capacity":1000, "port":null }
+	]
+}

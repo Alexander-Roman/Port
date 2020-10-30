@@ -1,5 +1,7 @@
 package com.epam.port.logic;
 
+import java.util.Objects;
+
 public class Pier {
 
     private final Port port;
@@ -34,5 +36,29 @@ public class Pier {
             cargo++;
         }
         ship.setCargo(cargo);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Pier pier = (Pier) o;
+        return Objects.equals(port, pier.port);
+    }
+
+    @Override
+    public int hashCode() {
+        return port != null ? port.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                "port=" + port +
+                '}';
     }
 }

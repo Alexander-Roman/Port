@@ -3,6 +3,7 @@ package com.epam.port.logic;
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
@@ -65,6 +66,10 @@ public class Port {
         piersSemaphore.release();
     }
 
+    public int getCargoValue() {
+        return cargo.get();
+    }
+
     public void incrementCargo() {
         cargo.incrementAndGet();
     }
@@ -83,8 +88,30 @@ public class Port {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Port port = (Port) o;
+        return Objects.equals(cargo, port.cargo) &&
+                Objects.equals(piers, port.piers) &&
+                Objects.equals(piersSemaphore, port.piersSemaphore);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = cargo.hashCode();
+        result = 31 * result + piers.hashCode();
+        result = 31 * result + piersSemaphore.hashCode();
+        return result;
+    }
+
+    @Override
     public String toString() {
-        return "Port{" +
+        return getClass().getSimpleName() + "{" +
                 "cargo=" + cargo +
                 ", piers=" + piers +
                 ", piersSemaphore=" + piersSemaphore +
