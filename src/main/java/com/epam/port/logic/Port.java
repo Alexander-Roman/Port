@@ -18,9 +18,9 @@ public class Port {
     private final AtomicInteger cargo = new AtomicInteger(INITIAL_CARGO);
     private final Deque<Pier> piers = new LinkedList<Pier>(
             Arrays.asList(
-                    new Pier(),
-                    new Pier(),
-                    new Pier()
+                    new Pier(this),
+                    new Pier(this),
+                    new Pier(this)
             )
     );
     private final Semaphore piersSemaphore = new Semaphore(piers.size());

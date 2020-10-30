@@ -67,7 +67,7 @@ public class Ship implements Runnable {
         Pier pier;
         try {
             pier = port.acquirePier();
-            pier.accept(this);
+            pier.process(this);
         } catch (InterruptedException e) {
             LOGGER.error(e.getMessage(), e);
         }
